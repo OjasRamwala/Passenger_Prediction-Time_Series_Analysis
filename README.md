@@ -25,11 +25,21 @@ Time Series may not be applied in cases when (basically there is no point in app
    (1) Values are constant
    (2) Values are in the form of functions
  
-
 What is Stationarity?
 Time Series has a particular behaviour over time.
 There is a very high probabilty that it will follow the same in the future.
 No matter how much we try there will always be some stationarity in Time Series.
+A stationary time series is one whose statistical properties such as mean, variance, autocorrelation, etc. are all constant over time.
+
+Tests to check Stationarity:-
+  (1) Rolling Statistics (Visual Sequence) - Plot the moving average or moving variance and see if it varies with time.
+  (2) ADCF(Augmented Disckey Fuller)Test -  Null hypothesis is that the TS is non-stationary. The test results comprise of a Test                                                   Statistic and some Critical Values. 
+ ARIMA MODEL :- Best model to work with time series data.
+ AR + I + MA = Auto Regressive + Integration + Moving Average (combination of 2 models)
+ ARIMA model has 3 parameters : P = Autoregressive Lags ; Q = moving average ; d = order of differentiation
+ To predict the value of P we will have to plot the Partial Auto Correlation (PAC) graph.
+ To predict the value of Q we will have to plot Auto Correlation Function (ACF) graph.
+ 
 
    
   
