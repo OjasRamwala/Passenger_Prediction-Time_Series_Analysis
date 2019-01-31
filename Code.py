@@ -1,4 +1,3 @@
-
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -52,7 +51,25 @@ print(dfoutput)
 indexedDataset_logScale = np.log(indexedDataset)
 plt.plot (indexedDataset_logScale)
 
-movingAverage = indexedDataset_logScale.rolling(window=12).mean()
+movingAverage = indexedDataset_logScale.rolling(window=12).mean() # window = 12 -> 12 months
 movingSTD = indexedDataset_logScale.rolling(window = 12).std()
 plt.plot (indexedDataset_logScale)
 plt.plot(movingAverage , color = 'red')
+# The plot shows that the mean is not stationary... it is still moving with time.. however in the log time it stil better than the previous one
+#Upward Trend -> Data is not stationary
+
+# We will get the difference between the moving average and the actual number of passengers 
+datasetLogScaleMinusMovingAverage = indexedDataset_logScale - movingAverage 
+datasetLogScaleMinusMovingAverage.head(12) # Top 12 values
+
+# Removing NaN (Not a Number) value
+datasetLogScaleMinusMovingAverage.dropna(inplace = True)
+datasetLogScaleMinusMovingAverage.head(10)
+
+
+
+
+
+
+
+
