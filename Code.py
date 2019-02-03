@@ -9,7 +9,8 @@ dataset = pd.read_csv ('AirPassengers.csv')
 dataset['Month'] = pd.to_datetime(dataset['Month'] , infer_datetime_format = True)
 indexedDataset = dataset.set_index(['Month']) #setting index variable as month
 
-'''#Visualising the data
+'''
+#Visualising the data
 from datetime import datetime
 indexedDataset.tail(5)'''
 
@@ -65,6 +66,50 @@ datasetLogScaleMinusMovingAverage.head(12) # Top 12 values
 # Removing NaN (Not a Number) value
 datasetLogScaleMinusMovingAverage.dropna(inplace = True)
 datasetLogScaleMinusMovingAverage.head(10)
+
+from statsmodels.tsa.stattools import adfuller
+def test_stationarity (timeseries):
+    
+    #Deteriming the rolling statistics
+    movingAverage = timeseries.rolling(window = 12).mean()
+    movingSTD = timeseries.rolling(window = 12).std()
+    
+    #Plot rolling statistics 
+    orig = plt.plot(timeseries , color = 'blue' , label = 'Original')
+    mean = plt.plot(movingAverage , color = 'red' , label = 'Rolling Mean')
+    std =  plt.plot(movingSTD , color = 'black' , label = 'Rolling Std')
+    plt.legend (loc = 'best')
+    plt.title ("Rolling Mean and Standard Deviation")
+    plt.show (block = False)
+    
+    # Performing the Dickey-Fuller test
+    from statsmodels.tsa.stattools import adfuller
+    print ('Results of Dickey-Fuller Test:')
+    dftest = adfuller(timeseries['#Passengers'] , autolag = 'AIC')
+    #The Akaike information criterion (AIC) is an estimator of the relative quality of statistical models for a given set of data. Given a collection of models for the data, AIC estimates the quality of each model, relative to each of the other models. Thus, AIC provides a means for model selection.
+    # AIC gives us the exact info of what we want in the time series
+    # Analyses the difference between the exact values and the estimated values
+    dfoutput = pd.Series (dftest[0:4] , index = ['Test Statistic' , 'p-value' , '#lags Used' , 'Number of Observations Used'])
+    for key,value in dftest[4].items():
+        dfoutput['Critical Value (%s)' %key] = value
+    print(dfoutput)
+    
+test_stationarity (datasetLogScaleMinusMovingAverage)    
+                                                            '''Results of Dickey-Fuller Test:
+                                                    Test Statistic                  -3.162908
+                                                    p-value                          0.022235
+                                                    #lags Used                      13.000000
+                                                    Number of Observations Used    119.000000
+                                                    Critical Value (1%)             -3.486535
+                                                    Critical Value (5%)             -2.886151
+                                                    Critical Value (10%)            -2.579896
+                                                    dtype: float64'''
+                                                    # P- Value is relatively less as compared to 0.99 obtained intially
+
+
+
+
+
 
 
 
