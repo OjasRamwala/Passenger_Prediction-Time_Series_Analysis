@@ -1,7 +1,9 @@
 # Passenger_Prediction-Time_Series_Analysis
 This project is a learning attempt to build a model to forecast the demand (passenger traffic) in Airplanes. Time Series Analysis is used to build this model.
 
+
 Why Time Series Analysis?
+
 In some cases we just have 1 variable - Time.
 We analyse the time series data in order to extract meaningful statistics and other characteristics.
 
@@ -9,10 +11,15 @@ What is Time Series?
 A time series is a set of observation taken at specified times usually at equal intervals.
 It is used to predict the future values based on the previous observed values.
 
+
 Applications:-
+  
   (1) Business Forecasting
+  
   (2) Unterstanding the past behaviour
+  
   (3) Planning the future
+  
   (4) Evaluate current accomplishments
   
 Components of a Time Series:-
