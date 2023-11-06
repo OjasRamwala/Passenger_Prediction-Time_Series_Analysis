@@ -54,7 +54,7 @@ Tests to check Stationarity:-
   
   (1) Rolling Statistics (Visual Sequence) - Plot the moving average or moving variance and see if it varies with time.
   
-  (2) ADCF(Augmented Disckey Fuller)Test -  Null hypothesis is that the TS is non-stationary. The test results comprise of a Test                                                   Statistic and some Critical Values. 
+  (2) ADF(Augmented Disckey Fuller)Test -  Null hypothesis is that the TS is non-stationary. The test results comprise of a Test                                                   Statistic and some Critical Values. 
  
  
  ARIMA MODEL :- Best model to work with time series data.
